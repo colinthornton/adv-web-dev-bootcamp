@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+header {
+  padding: 35px 100px;
+  position: absolute;
+  width: 100vw;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Quicksand";
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fade-in 1s .3s 1 forwards;
+}
+
+#header__right {
+  text-decoration: none;
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#landing {
+  padding: 125px 100px;
+  height: 100vh;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Open Sans";
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#landing__background {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  background-image: url("/assets/img/main.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#landing button {
+  outline: none;
+  border: none;
+  background: purple;
+  border-radius: 5px;
+
+}
+
+@media screen and (max-width: 984px) {
+  header {
+    padding: 20px 50px;
+  }
+  #landing {
+    padding: 100px 50px;
+  }
+}
+
+@media screen and (max-width: 784px) {
+  #landing {
+    height: 400px;
+  }
+}
