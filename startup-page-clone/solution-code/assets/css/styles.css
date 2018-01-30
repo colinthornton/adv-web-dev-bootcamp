@@ -24,6 +24,12 @@ a:hover {
   opacity: 1;
 }
 
+a.btn {
+  border-radius: 4px;
+  font-weight: bold;
+  
+}
+
 /*Header Styles*/
 
 header {
