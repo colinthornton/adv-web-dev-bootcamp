@@ -9,16 +9,19 @@ const user = {
 }
 
 btn.addEventListener('click', () => {
-  update();
+  displayNewUser();
 });
 
-function update() {
+function displayNewUser() {
   fetch(url)
   .then(res => {
-    return handleErrors(res);
+    if (!res.ok) {
+      throw Error(res.status);
+    }
+    return res;
   })
-  .then(data => {
-    return data.results[0];
+  .then(res => {
+    return res.json().then(data => data.results[0]);
   })
   .then(data => {
     user.avatar.src = data.picture.medium;
@@ -28,15 +31,8 @@ function update() {
     user.city.textContent = capitalize(data.location.city);
   })
   .catch(err => {
-    console.log('There was an error. Status code:', err.message);
+    console.log('There was an error. Status code:', err);
   });
-}
-
-function handleErrors(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  throw new Error(res.status);
 }
 
 function capitalize(string) {
