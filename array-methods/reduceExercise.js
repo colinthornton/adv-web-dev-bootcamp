@@ -32,8 +32,6 @@ Examples:
 function vowelCount(str){
   var vowels = 'aeiou';
   return str.toLowerCase().split('').reduce(function(obj, char) {
-    console.log('obj is', obj);
-    console.log('char is', char);
     if (vowels.indexOf(char) !== -1) {
       if (char in obj) {
         obj[char]++;
@@ -103,5 +101,5 @@ function partition(arr, callback){
   return arr.reduce(function(newArr, val) {
     callback(val) ? newArr[0].push(val) : newArr[1].push(val);
     return newArr;
-  }, [[],[]])
+  }, [[], []])
 }
