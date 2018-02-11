@@ -150,7 +150,18 @@ Examples:
 */
 
 function bind(fn, thisArg){
-
+  var args;
+  if (arguments.length > 2) {
+    args = [].slice.call(arguments, 2);
+  }
+  return function() {
+    if (args) {
+      args = args.concat([].slice.call(arguments));
+    } else {
+      args = arguments;
+    }
+    return fn.apply(thisArg, args);
+  }
 }
 
 /*
@@ -164,6 +175,7 @@ inner function when it is invoked. You will have to make use of closure!
 Examples:
 
     function personSubtract(a,b,c){
+        console.log(a,b,c);
         return this.firstName + " subtracts " + (a-b-c);
     }
 
@@ -194,5 +206,10 @@ Examples:
 
 
 function flip(fn, thisArg){
-
+  var outerFunctionArgs = [].slice.call(arguments, 2);
+  return function() {
+    var innerFunctionArgs = [].slice.call(arguments);
+    var combinedArgs = outerFunctionArgs.concat(innerFunctionArgs).slice(0, fn.length);
+    return fn.apply(thisArg, combinedArgs.reverse());
+  }
 }
