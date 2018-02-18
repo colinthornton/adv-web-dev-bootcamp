@@ -64,9 +64,7 @@ Example:
     createStudentObj('Elie', 'Schoppik') // {firstName: 'Elie', lastName: 'Schoppik'}
 */
 
-const createStudentObj = (firstName, lastName) => {
-    return { firstName, lastName };
-};
+const createStudentObj = (firstName, lastName) => ({ firstName, lastName });
 
 /* 5 - Given the following code:
 
