@@ -43,8 +43,8 @@ Examples:
 
 */
 
-function joinArrays(){
-  return [...arguments].reduce((a, b) => a.concat(b), []);
+function joinArrays(...args){
+  return args.reduce((a, b) => a.concat(b), []);
 }
 
 /*
@@ -57,8 +57,8 @@ Examples:
     sumEvenArgs(1,2) // 2
 */
 
-function sumEvenArgs(){
-  return [...arguments].reduce((acc, val) => {
+function sumEvenArgs(...args){
+  return args.reduce((acc, val) => {
     if (val % 2 === 0) {
       return acc + val;
     }
@@ -102,8 +102,7 @@ Examples:
 */
 
 
-function flip(fn, thisArg){
-  const outerArgs = [...arguments].slice(2);
+function flip(fn, thisArg, ...outerArgs){
   return function() {
     const innerArgs = [...arguments];
     const combinedArgs = [...outerArgs, ...innerArgs].slice(0, fn.length);
@@ -148,8 +147,7 @@ Examples:
 
 */
 
-function bind(fn, thisArg){
-  const outerArgs = [...arguments].slice(2);
+function bind(fn, thisArg, ...outerArgs){
   return function() {
     const innerArgs = [...arguments];
     const combinedArgs = [...outerArgs, ...innerArgs].slice(0, fn.length);
